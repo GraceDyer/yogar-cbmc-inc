@@ -13,7 +13,7 @@ Our experiments are conducted on a high-performance system with the following sp
 ### 2. Bin
 The directory containing the executable binaries of our tool, including:
 - **`yogar-CBMC`**: The non-regression version.
-- **`yogar-CBMC-inc`**: The regression version.
+- **`yogar-CBMC-Inc`**: The regression version.
 
 ### 3. Scripts
 Python scripts used in our experiments:
@@ -37,7 +37,7 @@ To reproduce the experimental data, follow these steps to perform regression and
   cd scripts
   python regression-bench-generate.py
   ```
-  This script processes each instance in `bench-regression` using `yogar-CBMC-inc` in a regression verification manner. The results are saved in `result-regression.txt`.
+  This script processes each instance in `bench-regression` using `yogar-CBMC-Inc` in a regression verification manner. The results are saved in `result-regression.txt`.
 
 - **Execute Non-Regression Verification**  
   Run the following to perform non-regression verification:

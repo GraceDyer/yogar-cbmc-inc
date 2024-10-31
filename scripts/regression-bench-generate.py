@@ -71,13 +71,13 @@ def code_generation_client(input_code, client, model_name):
             time.sleep(2)
 
 def code_generation_deepseek(problem):
-    client = OpenAI(api_key="sk-af0f584d9df14565becade6c8999e4a1", base_url="https://api.deepseek.com")
+    client = OpenAI(api_key="xxxxxxxxxxxxxxxxxxxxxxxxxxx", base_url="xxxxxxxxxxxxxxxxxxxxx")
     return code_generation_client(problem, client, "deepseek-chat")
 
 def code_generation_qwen(problem):
     client = OpenAI(
-        api_key="sk-93a1db5eacb543688353d9c03ba32170", 
-        base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+        api_key="xxxxxxxxxxxxxxxx", 
+        base_url="xxxxxxxxxxxxxxxxxxx"
     )
     return code_generation_client(problem, client, "qwen-coder-turbo-latest")
 

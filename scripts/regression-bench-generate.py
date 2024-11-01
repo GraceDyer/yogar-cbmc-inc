@@ -118,4 +118,4 @@ def process_file(file_path, output_folder):
 
             while line is not None and is_non_substantial_code(line):
                 n -= 1
-                line, line_number = read_nth_last_line(modified
+                line, line_number = read_nth_last_line(modified, n)

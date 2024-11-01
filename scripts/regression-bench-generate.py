@@ -139,4 +139,4 @@ def main(input_folder, output_folder):
             file_path = os.path.join(input_folder, filename)
             process_file(file_path, output_folder)
 
-main("input_folder", "ben_res")
+main("benchmarks//bench-origin", "benchmarks//bench_regression")

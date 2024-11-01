@@ -6,7 +6,7 @@ import time
 from openai import OpenAI
 
 def generate_random_number():
-    return random.randint(3, 40)
+    return random.randint(3, 80)
 
 def read_nth_last_line(file_path, n):
     with open(file_path, 'r') as file:
@@ -119,3 +119,24 @@ def process_file(file_path, output_folder):
             while line is not None and is_non_substantial_code(line):
                 n -= 1
                 line, line_number = read_nth_last_line(modified, n)
+                if line_number is None or line_number in replaced_lines:
+                    break
+
+            if line and line_number not in replaced_lines:
+                modified_line = modify_code_with_model(line)
+                replace_line_in_file(modified_file, line_number, modified_line)
+                replaced_lines.add(line_number)
+
+            attempts += 1
+
+        base_file = modified_file
+
+def main(input_folder, output_folder):
+    os.makedirs(output_folder, exist_ok=True)
+
+    for filename in os.listdir(input_folder):
+        if filename.endswith(".i"):
+            file_path = os.path.join(input_folder, filename)
+            process_file(file_path, output_folder)
+
+main("input_folder", "ben_res")

@@ -5,7 +5,7 @@ import shutil
 
 benchmark_path = '..//benchmarks//bench-regression//'
 result_file = 'result-yogar-cbmc-inc.txt'
-yogar_cbmc = '..//bin//Yogar-CBMC-Inc'
+yogar_cbmc = '..//bin//yogar-cbmc-inc'
 timeoutT = 600
 
 

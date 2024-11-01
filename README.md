@@ -12,46 +12,46 @@ Our experiments are conducted on a high-performance system with the following sp
 
 ### 2. Bin
 The directory containing the executable binaries of our tool, including:
-- **`yogar-CBMC`**: The non-regression version.
-- **`yogar-CBMC-Inc`**: The regression version.
+- **`yogar-cbmc`**: The original version of yogar-CBMC.
+- **`yogar-cbmc-inc`**: The incremental version of yogar-CBMC for efficient regression verification.
 
 ### 3. Scripts
 Python scripts used in our experiments:
 - **regression-bench-generate.py**: Generates the regression benchmark from `bench-origin`.
-- **batch-run-yogar-cbmc-inc.py**: Performs regression verification on `bench-regression`.
-- **batch-run-yogar-cbmc.py**: Performs non-regression verification on `bench-regression`.
+- **batch-run-yogar-cbmc-inc.py**: Performs incremental verification on `bench-regression`.
+- **batch-run-yogar-cbmc.py**: Performs non-incremental verification on `bench-regression`.
 
 ### 4. Results
-Contains the experimental data obtained from running `batch-run-incre.py` and `batch-run-non-incre.py`.
+Contains the experimental data obtained from running `batch-run-yogar-cbmc-inc.py` and `batch-run-yogar-cbmc.py`.
 
 ### 5. README.md
 This file provides an overview of the project structure and instructions.
 
 # Instructions for Reproducing Experimental Data
 
-To reproduce the experimental data, follow these steps to perform regression and non-regression verifications, as well as to generate benchmark instances.
+To reproduce the experimental data, follow these steps to generate the regression benchmark instances, and perform incremental and non-incremental verifications.
 
-- **Execute Regression Verification**  
+- **Generate the Regression Benchmark**  
   Navigate to the `scripts` directory and run:
   ```bash
   cd scripts
   python regression-bench-generate.py
   ```
-  This script processes each instance in `bench-regression` using `yogar-CBMC-Inc` in a regression verification manner. The results are saved in `result-regression.txt`.
+  This script utilizes an LLM to generate four versions of code for each instance, with `v0` representing the original instance. Note that owing to the intrinsic randomness of the LLM, the regression benchmark generated upon each time will be different. 
 
-- **Execute Non-Regression Verification**  
-  Run the following to perform non-regression verification:
+- **Perform Non-Incremental Verification**  
+  Run the following to perform non-incremental verification:
   ```bash
-  python batch-run-non-incre.py
+  python batch-run-yogar-cbmc.py
   ```
-  This script verifies all instances in `bench-regression` sequentially using `yogar-CBMC`, with results recorded in `result-non-regression.txt`.
+  This script verifies all instances in `bench-regression` sequentially using `yogar-cbmc`, with results recorded in `result-yogar-cbmc.txt`.
 
-- **Generate Benchmarks for Regression verification**  
-  To create the `bench-regression` benchmark instances from `bench-origin`, use:
+- **Perform Incremental Verification**  
+  Run the following to perform incremental verification:
   ```bash
-  python batch-run-incre.py
+  python batch-run-yogar-cbmc-inc.py
   ```
-  This script generates four versions of code for each instance, with `v0` representing the original instance. These instances facilitate comparison across incremental versions in regression verification.
+  This script verifies all instances in `bench-regression` sequentially using `yogar-cbmc-inc`, with results recorded in `result-yogar-cbmc-inc.txt`.
 
 # Explanation of Results
 

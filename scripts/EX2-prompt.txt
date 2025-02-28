@@ -1,0 +1,1 @@
+Please make some minor modifications to this code. Make sure to modify only two or three functions and do not change their interfaces. You may add, remove, or modify statements, but ensure that there are no syntax errors. In your response, output only the modified functions.
